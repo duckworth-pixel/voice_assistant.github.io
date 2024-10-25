@@ -147,12 +147,12 @@ def close_application(app_name):
         talk("Sorry, I cannot close that application.")
 
 def reopen_recently_closed_tab(browser_name):
-    if browser_name == "chrome" or browser_name == "firefox" or browser_name == "safari" or browser_name == "brave" or browser_name == "edge" :
+    if browser_name == "chrome" or browser_name == "Mozilla firefox" or browser_name == "safari" or browser_name == "brave" or browser_name == "opera" or browser_name == "Tor Browser":
         # Pressing Ctrl + Shift + T to reopen last closed tab
         pyautogui.hotkey('ctrl', 'shift', 't')
         talk(f"Reopening recently closed tab in {browser_name}.")
     else:
-        talk(f"Sorry, reopening tabs recent {browser_name} is not supported yet or the application is not downloaded yet. can l download it for you now ")
+        talk(f"Sorry, reopening tabs recent {browser_name} is not supported yet or the application is not downloaded yet. Can l download it for you now ")
 
 # Example usage
 # reopen_recently_closed_tab("chrome")
@@ -192,10 +192,10 @@ def read_news():
 # Main control loop
 def voice_assistant():
     """Main Voice assistant loop to listen and perform actions"""
-    talk("Hello! My name is Alice . How can l be of help to you today?")
+    talk("Hello! My name is Alice . How may l help to you ?")
     
     while True:
-        command = listen()
+        command = listen() # listens to command given to it from here
 
         if command:
             if "open" in command:
@@ -214,8 +214,8 @@ def voice_assistant():
                 restart_pc()
                 break  # Exit after restart command
 
-            elif "search" in command:
-                query = command.replace("search", "").strip()
+            elif "search" in command or "meaning of" in command:
+                query = command.replace("search", "","meaning of", "").strip()
                 search_web(query)
 
             elif "news" in command:
